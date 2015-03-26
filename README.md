@@ -46,5 +46,8 @@ document.add_payment_to_debtor_payment_block(debtor_payment_block_reference,
 * creditor_bic - (str) The BIC of the receiving bank
 * creditor_account - (str) The creditors IBAN account
 
+##References
+Based on the AIB's specification found [here](http://business.aib.ie/content/dam/aib/business/docs/products/payments/AIB%20SEPA%20Credit%20Transfers%20XML%20File%20Specification.pdf)
+
 ##Dependencies
 Depends on lxml, www.lxml.de (pip install lxml)
