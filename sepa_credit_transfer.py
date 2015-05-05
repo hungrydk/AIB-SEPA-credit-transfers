@@ -36,7 +36,7 @@ class Document:
 
     def add_debtor_payment_block(self, debtor_name, debtor_account, debtor_agent_bic="AIBKIE2D",
                    payment_date=datetime.date.today()):
-        reference = str(uuid())
+        reference = str(uuid())[:35]
 
         pmt_inf_block = etree.SubElement(self.root[0], "PmtInf")
         payment_id = etree.SubElement(pmt_inf_block, "PmtInfId")
