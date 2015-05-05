@@ -21,7 +21,7 @@ class Document:
         msg_id = etree.SubElement(group_header, "MsgId")
         msg_id.text = reference
         crt_tm = etree.SubElement(group_header, "CreDtTm")
-        crt_tm.text = datetime.datetime.now().strftime("%Y:%m:%dT%H:%M:%S")
+        crt_tm.text = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
         no_of_tx = etree.SubElement(group_header, "NbOfTxs")
         control_sum = etree.SubElement(group_header, "CtrlSum")
         initgPty = etree.SubElement(group_header, "InitgPty")
