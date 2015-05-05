@@ -39,12 +39,12 @@ class Document:
         reference = str(uuid())
 
         pmt_inf_block = etree.SubElement(self.root[0], "PmtInf")
-        blck_no_tx = etree.SubElement(pmt_inf_block, "NbOfTxs")
-        blck_ctrl_sum = etree.SubElement(pmt_inf_block, "CtrlSum")
         payment_id = etree.SubElement(pmt_inf_block, "PmtInfId")
         payment_id.text = reference
         method = etree.SubElement(pmt_inf_block, "PmtMtd")
         method.text = "TRF" # Must always be this value
+        blck_no_tx = etree.SubElement(pmt_inf_block, "NbOfTxs")
+        blck_ctrl_sum = etree.SubElement(pmt_inf_block, "CtrlSum")
         pmt_date = etree.SubElement(pmt_inf_block, "ReqdExctnDt")
         pmt_date.text = payment_date.strftime("%Y-%m-%d")
         dbt = etree.SubElement(pmt_inf_block, "Dbtr")
