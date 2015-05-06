@@ -1,8 +1,12 @@
 # AIB-SEPA-credit-transfers
-Small python library with the purpose of creating SEPA Credit Transfer files specifically for AIB (Allied Irish Banks)
+Small python library with the purpose of creating SEPA Credit Transfer files specifically for AIB (Allied Irish Banks).
+Should work for other banks as well though, if they comply with pain.001.001.03 (CustomerCreditTransferInitiationV03)
 
-## Warning
-This is work in progress. Output has not yet been validated.
+## Status
+This is work in progress. It has not yet been validated in AIB Online banking
+
+Schema validates against pain.001.001.03 (CustomerCreditTransferInitiationV03)
+Test here http://www.mobilefish.com/services/sepa_xml_validation/sepa_xml_validation.php
 
 ##Usage
 Initialize a new payment document
