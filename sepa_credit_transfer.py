@@ -93,28 +93,27 @@ class Document:
             raise ValueError("creditor_account cannot be more than 34 characters long")
 
         tx_inf_blck = self.transaction_information_blocks[debtor_payment_block_reference]
-        pmt_inf = etree.SubElement(tx_inf_blck, "PmtInf")
-        pmt_id = etree.SubElement(pmt_inf, "PmtId")
-        inst_id = etree.SubElement(pmt_id, "InstId")
+        pmt_id = etree.SubElement(tx_inf_blck, "PmtId")
+        inst_id = etree.SubElement(pmt_id, "InstrId")
         inst_id.text = instruction_id
         e_to_e_id = etree.SubElement(pmt_id, "EndToEndId")
         e_to_e_id.text = description
 
-        trx_inf = etree.SubElement(pmt_inf, "CdtTrfTxInf")
-        amt = etree.SubElement(trx_inf, "Amt")
-        ins_amt = etree.SubElement(amt, "InstdAmt")
+
+        amt = etree.SubElement(tx_inf_blck, "Amt")
+        ins_amt = etree.SubElement(amt, "InstdAmt", Ccy="EUR") #Currently only supporting euro
         ins_amt.text = str(amount)
 
-        cdr_agt = etree.SubElement(trx_inf, "CdtrAgt")
+        cdr_agt = etree.SubElement(tx_inf_blck, "CdtrAgt")
         fin_inst_id = etree.SubElement(cdr_agt, "FinInstnId")
         bic = etree.SubElement(fin_inst_id, "BIC")
         bic.text = creditor_bic
 
-        cdtr = etree.SubElement(trx_inf, "Cdtr")
+        cdtr = etree.SubElement(tx_inf_blck, "Cdtr")
         name = etree.SubElement(cdtr, "Nm")
         name.text = creditor_name
 
-        cdtr_acct = etree.SubElement(trx_inf, "CdtrAcct")
+        cdtr_acct = etree.SubElement(tx_inf_blck, "CdtrAcct")
         acct_id = etree.SubElement(cdtr_acct, "Id")
         iban = etree.SubElement(acct_id, "IBAN")
         iban.text = creditor_account
