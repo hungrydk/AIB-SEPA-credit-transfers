@@ -53,7 +53,7 @@ class Document:
         dbt_acct = etree.SubElement(pmt_inf_block, "DbtrAcct")
         dbt_acct_id = etree.SubElement(dbt_acct, "Id")
         dbt_iban = etree.SubElement(dbt_acct_id, "IBAN")
-        dbt_iban.text = debtor_account
+        dbt_iban.text = debtor_account.replace(" ", "")
         dbt_acct_ccy = etree.SubElement(dbt_acct, "Ccy")
         dbt_acct_ccy.text = "EUR" # Must be Euro
         dbt_agt = etree.SubElement(pmt_inf_block, "DbtrAgt")
