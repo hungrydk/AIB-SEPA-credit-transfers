@@ -60,9 +60,8 @@ class Document:
         fin_inst_id = etree.SubElement(dbt_agt, "FinInstnId")
         bic = etree.SubElement(fin_inst_id, "BIC")
         bic.text = debtor_agent_bic
-        tx_inf_blck = etree.SubElement(pmt_inf_block, "CdtTrfTxInf")
 
-        self.transaction_information_blocks[reference] = tx_inf_blck
+        self.transaction_information_blocks[reference] = pmt_inf_block
 
         return reference
 
@@ -92,7 +91,8 @@ class Document:
         if len(creditor_account) > 34:
             raise ValueError("creditor_account cannot be more than 34 characters long")
 
-        tx_inf_blck = self.transaction_information_blocks[debtor_payment_block_reference]
+        pmt_inf_block = self.transaction_information_blocks[debtor_payment_block_reference]
+        tx_inf_blck = etree.SubElement(pmt_inf_block, "CdtTrfTxInf")
         pmt_id = etree.SubElement(tx_inf_blck, "PmtId")
         inst_id = etree.SubElement(pmt_id, "InstrId")
         inst_id.text = instruction_id
