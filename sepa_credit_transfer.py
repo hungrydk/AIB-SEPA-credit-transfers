@@ -121,7 +121,7 @@ class Document:
         nb_of_txs = tx_inf_blck.find("../NbOfTxs")
         ctrl_amt = tx_inf_blck.find("../CtrlSum")
 
-        all_amounts = tx_inf_blck.findall(".//InstdAmt")
+        all_amounts = pmt_inf_block.findall(".//InstdAmt")
         if not isinstance(all_amounts, list):
             all_amounts = list(all_amounts)
 
