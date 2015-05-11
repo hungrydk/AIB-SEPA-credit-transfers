@@ -145,7 +145,7 @@ class Document:
 
 
     def __str__(self):
-        return etree.tostring(self.root, pretty_print=True)
+        return etree.tostring(self.root, pretty_print=True, xml_declaration=True, encoding="utf-8")
 
 
 
