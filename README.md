@@ -3,7 +3,8 @@ Small python library with the purpose of creating SEPA Credit Transfer files spe
 Should work for other banks as well though, if they comply with pain.001.001.03 (CustomerCreditTransferInitiationV03)
 
 ## Status
-This is work in progress. It has not yet been validated in AIB Online banking
+Confirmed working with AIB.
+If you have successfully used it with other banks, please let us know.
 
 Schema validates against pain.001.001.03 (CustomerCreditTransferInitiationV03)
 Test here http://www.mobilefish.com/services/sepa_xml_validation/sepa_xml_validation.php
