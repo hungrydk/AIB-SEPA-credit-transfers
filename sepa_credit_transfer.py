@@ -35,7 +35,7 @@ class Document:
 
 
     def add_debtor_payment_block(self, debtor_name, debtor_account, debtor_agent_bic="AIBKIE2D",
-                   payment_date=datetime.date.today):
+                   payment_date=None):
         reference = str(uuid())[:35]
 
         pmt_inf_block = etree.SubElement(self.root[0], "PmtInf")
@@ -46,6 +46,8 @@ class Document:
         blck_no_tx = etree.SubElement(pmt_inf_block, "NbOfTxs")
         blck_ctrl_sum = etree.SubElement(pmt_inf_block, "CtrlSum")
         pmt_date = etree.SubElement(pmt_inf_block, "ReqdExctnDt")
+        if payment_date is None:
+            payment_date = datetime.date.today()
         pmt_date.text = payment_date.strftime("%Y-%m-%d")
         dbt = etree.SubElement(pmt_inf_block, "Dbtr")
         dbt_name = etree.SubElement(dbt, "Nm")
