@@ -13,7 +13,10 @@ class Document:
     reference = ""
     transaction_information_blocks = {}
 
-    def __init__(self, oin, reference):
+    def __init__(self, reference, oin=None, name=None):
+        if oin is not None and name is not None:
+            raise SepaFormatException("A sepa credit transaction cannot have both a name and an oin as initiating "
+                                      "party. Only one of them should be present")
         self.reference = reference
         self.root = etree.Element("{%s}Document" % self.xmlns, nsmap={'xsi': self.xsi, None: self.xmlns})
         cstmr_trx_info = etree.SubElement(self.root, "CstmrCdtTrfInitn")
@@ -25,11 +28,15 @@ class Document:
         no_of_tx = etree.SubElement(group_header, "NbOfTxs")
         control_sum = etree.SubElement(group_header, "CtrlSum")
         initgPty = etree.SubElement(group_header, "InitgPty")
-        id = etree.SubElement(initgPty, "Id")
-        org_id = etree.SubElement(id, "OrgId")
-        othr = etree.SubElement(org_id, "Othr")
-        i_p_o_id = etree.SubElement(othr, "Id")
-        i_p_o_id.text = oin
+        if oin is not None:
+            id = etree.SubElement(initgPty, "Id")
+            org_id = etree.SubElement(id, "OrgId")
+            othr = etree.SubElement(org_id, "Othr")
+            i_p_o_id = etree.SubElement(othr, "Id")
+            i_p_o_id.text = oin
+        if name is not None:
+            nm = etree.SubElement(initgPty, "Nm")
+            nm.text = name
 
         self.group_header = group_header
 

@@ -4,7 +4,7 @@ __author__ = 'sune'
 from sepa_credit_transfer import Document
 
 
-document = Document("my-oin-no", "invoicing-2015-03-25")
+document = Document("invoicing-2015-03-25", name="My company name")
 my_ref = document.add_debtor_payment_block("Marvin Food Online ltd.", "IE12 AIBK 9334 5721 1531 19")
 
 document.add_payment_to_debtor_payment_block(my_ref,"1082-invoice-dd", "Payment F2200", Decimal('1226.53'),
