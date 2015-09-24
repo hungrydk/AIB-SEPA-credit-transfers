@@ -82,6 +82,10 @@ class Document:
                                             creditor_name,
                                             creditor_bic,
                                             creditor_account):
+
+        creditor_bic =  creditor_bic.strip().upper()
+        creditor_account = creditor_account.strip().upper()
+
         if " " in instruction_id:
             raise ValueError("instruction_id cannot contain spaces")
         if len(instruction_id) > 35:
