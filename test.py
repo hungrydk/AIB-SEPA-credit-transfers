@@ -14,6 +14,8 @@ document.add_payment_to_debtor_payment_block(my_ref,"1083-invoice-dd", "Payment 
                                              "Sune's Shady test deli", "BOFIIE3D", "IE19BOFI90008396375818")
 
 
+
+
 print document
 file = open ('/tmp/aibtest.xml', mode='wb')
 file.write(str(document))
