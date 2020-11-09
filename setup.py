@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="aib",
-    version="1.1",
+    version="2.0",
     author="Hungry.dk",
     author_email="tech@hungry.dk",
     description="Python package containing the hungry AIB Document class.",
