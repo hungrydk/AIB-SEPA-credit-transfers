@@ -1,6 +1,6 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", "rb") as fh:
     long_description = fh.read()
 
 setuptools.setup(
@@ -18,7 +18,7 @@ setuptools.setup(
         "Programming Language :: Python :: 2",
         "Operating System :: OS Independent",
     ],
-    python_requires='<=2.7.18',
+    python_requires='>=2.7',
     install_requires=[
         'lxml'
     ]
